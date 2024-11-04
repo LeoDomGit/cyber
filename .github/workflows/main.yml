@@ -60,11 +60,13 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          host: ${{ secrets.SSH_HOST }}
+          server: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "."
-          target: "/home/codingfs/htdocs/codingfs.com"
+          password: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ''
+          protocol: ssh
+          server-dir: /home/codingfs/htdocs/codingfs.com
+          local-dir: .
           exclude: |
             .git*
             .gitignore
